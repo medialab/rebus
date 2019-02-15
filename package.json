@@ -1,0 +1,52 @@
+{
+  "name": "rebus",
+  "description": "A writing tool materializing distant echoes from twitter data",
+  "homepage": "http://medialab.github.io/rebus",
+  "repository": "https://github.com/medialab/rebus",
+  "bugs": {
+    "url": "https://github.com/medialab/rebus/issues"
+  },
+  "license": "AGPL-3.0",
+  "authors": [
+    "médialab Sciences Po",
+    "Robin de Mourat"
+  ],
+  "version": "0.1.0",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "draft-js": "^0.10.5",
+    "lodash": "^4.17.11",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0",
+    "react-frame-component": "^4.0.2",
+    "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "2.1.3",
+    "react-tweet": "^1.7.1",
+    "redraft": "^0.10.2",
+    "tabletop": "^1.5.2"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "devDependencies": {
+    "gh-pages": "^2.0.1",
+    "install": "^0.12.2",
+    "node-sass": "^4.11.0",
+    "npm": "^6.7.0"
+  }
+}

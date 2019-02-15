@@ -1,0 +1,11 @@
+{
+  "sources": {
+    "default": {
+      "tweetsSpreadsheetGoogleDriveId": "1U1QCFZZAlDi3o7sSnyq3v5VYW_hwnTPWO2JaQDpBJFs",
+      "captionsGoogleDriveId": "1H3W044syYub15U3oFAaAd5PXYo4iThJiO7toPIIE3Q0",
+      "imagesGoogleDriveId": "156wFu4LE114ppcAqmeY-KvbGR4nx_qCeLqoMPM6J-eM",
+      "labelsGoogleDriveId": "1zFJXpby4p7fcQJqUVki7Ljqt_cJjyANF78EDJz-AA1U",
+      "imagesSrcBase": "http://sandbox.robindemourat.com/2019_ws_ensci/images"
+    }
+  }    
+}
