@@ -1,0 +1,233 @@
+
+
+:root{
+  --color-blue : #35A5C3;
+  --font-family-gothic: 'Ume Gothic', sans-serif;
+  --gutter-external: 90px;
+  --gutter-medium: 40px;
+  --gutter-small: 10px;
+
+  --fontsize-footer-1: 14px;
+  --fontsize-footer-2: 20px;
+  --fontsize-footer-3: 28px;
+  --fontsize-main-text: 77px;
+  --fontsize-take-anchor: 14px;
+
+  --dimension-logo-width: 191px;
+  --dimension-poster-width: 1984px;
+  --dimension-poster-height: 2834px;
+}
+
+@font-face {
+    font-family: 'ume_hy_gothic_o5regular';
+    src: url('ume-hgo5-webfont.woff2') format('woff2'),
+         url('ume-hgo5-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'ume_p_minchoregular';
+    src: url('ume-pmo3-webfont.woff2') format('woff2'),
+         url('ume-pmo3-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'ume_minchoregular';
+    src: url('ume-tmo3-webfont.woff2') format('woff2'),
+         url('ume-tmo3-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'ume_gothicregular';
+    src: url('ume-tgo4-webfont.woff2') format('woff2'),
+         url('ume-tgo4-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+.tweet-take,
+.captions-take,
+.labels-take
+{
+  position: relative;
+  color: blue;
+  z-index: -1;
+}
+.tweet-container,
+.caption-container,
+.label-container
+{
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 0;
+  opacity: 0.5;
+  transition : all .5s ease;
+}
+.tweet-take:hover .tweet-container{
+  opacity: .6;
+  z-index:0;
+}
+
+
+.tweet-container:hover{
+  opacity: 1;
+  z-index: 10;
+}
+
+.take-anchor{
+  opacity: 0;
+  font-size: var(--fontsize-take-anchor);
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  vertical-align: middle;
+  position: relative;
+  z-index: 100;
+}
+
+.captions-take:hover .caption-container
+.labels-take:hover .label-container,
+{
+  opacity: .6;
+  z-index: 10;
+}
+
+.tweet-container{
+  -webkit-text-stroke: nonz;
+  text-shadow: none;
+}
+
+.renderer-view{
+}
+
+
+.poster-container{
+  padding: 5rem;
+  font-size: var(--fontsize-main-text);
+  background: transparent;/* white */
+  position : relative;
+}
+
+.poster-contents{
+  font-family: "ume_p_minchoregular";
+}
+.poster-footer-container{
+  position : absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: var(--gutter-external);
+}
+
+.poster-footer{
+  
+  border-top: 2px solid var(--color-blue);
+  display : flex;
+  flex-flow: row nowrap;
+  align-items: stretch;
+  padding-top: var(--gutter-medium);
+  font-family: "ume_hy_gothic_o5regular";
+}
+
+.poster-footer .main-footer-contents {
+  flex: 2;
+  column-count: 2;
+  column-gap: var(--gutter-external);
+}
+
+.poster-footer h1,
+.poster-footer h2,
+.poster-footer h3,
+.poster-footer h4{
+  margin: 0;
+  padding: 0;
+}
+
+
+.poster-footer .footer-meta{
+  flex: 1;
+  max-width: 30%;
+  padding-left: var(--gutter-external);
+  position: relative;
+}
+
+.poster-footer .logo{
+  max-width: var(--dimension-logo-width);
+  position : absolute;
+  bottom: 0;
+  left: var(--gutter-external);
+}
+
+.poster-footer .project-title,
+.poster-footer .project-subtitle,
+.poster-footer .project-authors,
+.poster-footer .project-animators,
+.poster-footer .project-workshop-title
+{
+  color: var(--color-blue);
+}
+
+.poster-footer .project-title{
+  text-decoration: underline;
+  margin-bottom: var(--gutter-small);
+}
+
+.poster-footer .project-title,
+.poster-footer .project-animators,
+.poster-footer .project-workshop-title
+{
+  text-transform: uppercase;
+}
+
+.poster-footer .project-title,
+.poster-footer .project-subtitle,
+.poster-footer .project-authors,
+.poster-footer .project-workshop-title
+{
+  font-size: var(--fontsize-footer-3);
+}
+
+.poster-footer .project-subtitle,
+.poster-footer .project-authors,
+.poster-footer .project-workshop-title
+{
+  margin-bottom: var(--gutter-medium);
+}
+
+.poster-footer .project-animators
+{
+  font-size: var(--fontsize-footer-1);
+}
+
+.poster-footer .project-presentation{
+  font-size: var(--fontsize-footer-2);
+  font-family: "ume_gothicregular";
+}
+
+.poster-container{
+  width: var(--dimension-poster-width);
+  height: var(--dimension-poster-height);
+}
+@page { 
+  size:1984.25px 2834.65px; 
+  margin: 0e-6; 
+}
+
+
