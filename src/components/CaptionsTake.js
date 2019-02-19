@@ -16,10 +16,15 @@ class CaptionsTake extends Component {
         captions = [],
         cluster = 'all clusters',
         imagesMap = {},
+        settings = {}
       },
       target,
       container,
     } = this;
+
+    const {
+      cropCaptions = false,
+    } = settings;
 
     const targetTerm = extractTargetTerm(children);
     const relatedImages = findRelatedCaptions(
@@ -74,6 +79,7 @@ class CaptionsTake extends Component {
                   key={index} 
                   caption={caption} 
                   targetDimensions={targetDimensions} 
+                  cropCaption={cropCaptions}
                 />
               </div>
             )
@@ -90,6 +96,7 @@ CaptionsTake.contextTypes = {
   captions: PropTypes.array,
   imagesMap: PropTypes.object,
   cluster: PropTypes.string,
+  settings: PropTypes.object,
 }
 
 export default CaptionsTake;

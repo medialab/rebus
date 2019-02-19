@@ -6,6 +6,7 @@ class Caption extends Component {
       props: {
         caption,
         targetDimensions,
+        cropCaption = false,
       },
     } = this;
     if (!caption || !caption.image) {
@@ -18,6 +19,7 @@ class Caption extends Component {
     
     const captionTargetWidth = targetDimensions.width;
     const captionWidthRatio = +caption.width;
+    const captionRatio = caption.width / caption.height;
     const imageWidth = +caption.image.imageWidth;
     const captionInitialWidth = imageWidth * captionWidthRatio;
     
@@ -32,13 +34,26 @@ class Caption extends Component {
       top,
       position: 'absolute'
     }
+    let containerStyle = {};
+    if (cropCaption) {
+      containerStyle = {
+        width: captionTargetWidth * 1.3,
+        height: captionTargetWidth * captionRatio * 1.3 * 2,
+        left: 0,
+        top: -(captionTargetWidth * captionRatio)*1.3 * 2 * .5,
+        overflow: 'hidden',
+        position: 'absolute'
+      }
+    }
     return (
-      <img 
-        ref={bindRef} 
-        src={caption.src} 
-        alt={caption.src}
-        style={style}
-      />
+      <div style={containerStyle}>
+        <img 
+          ref={bindRef} 
+          src={caption.src} 
+          alt={caption.src}
+          style={style}
+        />
+      </div>
     )
       
   }

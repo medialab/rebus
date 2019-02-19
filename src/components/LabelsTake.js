@@ -16,10 +16,15 @@ class LabelsTake extends Component {
         labels = [],
         cluster = 'all clusters',
         imagesMap = {},
+        settings = {},
       },
       target,
       container,
     } = this;
+
+    const {
+      labelsLayout = 'random',
+    } = settings;
 
     const targetTerm = extractTargetTerm(children);
     const relatedImages = findRelatedLabels(
@@ -57,6 +62,11 @@ class LabelsTake extends Component {
         top: (targetDimensions.y - containerDimensions.y),
       };
     }
+
+    if (labelsLayout === 'stack') {
+      containerStyle.left = -(displayedLabels.length / 2) * 5;
+      containerStyle.top = -(displayedLabels.length / 2) * 5;
+    }
     return (
       <span ref={bindContainer} className="labels-take">
         <span className="take-anchor" ref={bindTargetRef}>
@@ -73,6 +83,8 @@ class LabelsTake extends Component {
                 <Label 
                   key={index} 
                   label={label} 
+                  index={index}
+                  layout={labelsLayout}
                   targetDimensions={targetDimensions} 
                 />
               </div>
@@ -90,6 +102,7 @@ LabelsTake.contextTypes = {
   labels: PropTypes.array,
   imagesMap: PropTypes.object,
   cluster: PropTypes.string,
+  settings: PropTypes.object,
 }
 
 export default LabelsTake;

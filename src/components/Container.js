@@ -4,6 +4,7 @@ import { Route } from "react-router-dom";
 import {convertToRaw, CompositeDecorator} from 'draft-js';
 import {EditorState, ContentState} from 'draft-js';
 import debounce from 'lodash/debounce';
+import schemaDefaults from 'json-schema-defaults';
 
 import {
   getTweets,
@@ -19,6 +20,8 @@ import {
   tildeStrategy,
   dollarStrategy
 } from '../helpers/draftStrategies';
+
+import {settingsSchema} from './SettingsManager';
 
 import EditorView from './EditorView';
 import RendererView from './RendererView';
@@ -74,6 +77,7 @@ class App extends Component {
         ContentState.createFromText(startText)
     , compositeDecorator);
     const localMetadata = localStorage.getItem('rebus/metadata');
+    const localSettings = localStorage.getItem('rebus/settings');
     let projectMetadata = {
       title: 'Rebus project title',
       subtitle: 'Rebus project subtitle',
@@ -82,6 +86,14 @@ class App extends Component {
     if (localMetadata) {
       try{
         projectMetadata = JSON.parse(localMetadata);
+      } catch(e) {
+
+      }
+    }
+    let settings = schemaDefaults(settingsSchema);
+    if (localSettings) {
+      try{
+        settings = JSON.parse(localSettings);
       } catch(e) {
 
       }
@@ -103,6 +115,8 @@ class App extends Component {
       labelsLoaded: false,
       imagesLoaded: false,
       projectMetadata,
+      settingsOpen: false,
+      settings,
     }
     this.updateRawContent = debounce(this.updateRawContent, 1000);
   }
@@ -156,6 +170,10 @@ class App extends Component {
     dataLoaded: PropTypes.bool,
     projectMetadata: PropTypes.object,
     setProjectMetadata: PropTypes.func,
+    settingsOpen : PropTypes.bool,
+    toggleSettings: PropTypes.func,
+    settings: PropTypes.object,
+    updateSettings: PropTypes.func,
   }
 
   getChildContext = () => ({
@@ -180,6 +198,10 @@ class App extends Component {
     && this.state.tweetsLoaded,
     projectMetadata: this.state.projectMetadata,
     setProjectMetadata: this.setProjectMetadata,
+    toggleSettings: this.toggleSettings,
+    settingsOpen: this.state.settingsOpen,
+    settings: this.state.settings,
+    updateSettings: this.updateSettings,
   })
 
   setProjectMetadata = projectMetadata => {
@@ -189,6 +211,17 @@ class App extends Component {
 
   updateCluster = cluster => {
     this.setState({cluster});
+  }
+
+  updateSettings = settings => {
+    localStorage.setItem('rebus/settings', JSON.stringify(settings));
+    this.setState({settings});
+  }
+
+  toggleSettings = () => {
+    this.setState({
+      settingsOpen: !this.state.settingsOpen
+    })
   }
 
   updateDataForGroup = group => {

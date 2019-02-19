@@ -6,6 +6,8 @@ class Label extends Component {
       props: {
         label,
         targetDimensions,
+        index,
+        layout,
       }
         
     } = this;
@@ -20,12 +22,18 @@ class Label extends Component {
     
     const labelWidth = targetDimensions.width * 1.5;
     const labelHeight = labelWidth * imageRatio;
-    const left = Math.random() * (targetDimensions.width * 2) - targetDimensions.width;
-    const top = Math.random() * (targetDimensions.width * 2) - targetDimensions.width;
+    let left = Math.random() * (targetDimensions.width * 2) - targetDimensions.width;
+    let top = Math.random() * (targetDimensions.width * 2) - targetDimensions.width;
     // const captionWidthRatio = +caption.width;
     // const imageWidth = +caption.image.imageWidth;
     // const captionInitialWidth = imageWidth * captionWidthRatio;
-    
+    if (layout === 'superpoze') {
+      left = 0;
+      top = 0;
+    } else if (layout === 'stack') {
+      left = index * 5;
+      top = index * 5;
+    }
     const style = {
       width: labelWidth,
       height: labelHeight,

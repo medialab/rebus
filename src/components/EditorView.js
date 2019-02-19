@@ -4,6 +4,10 @@ import uniq from 'lodash/uniq';
 import {Editor} from 'draft-js';
 import Frame, { FrameContextConsumer } from 'react-frame-component';
 import RendererView from './RendererView';
+import SettingsManager from './SettingsManager';
+import Modal from 'react-modal';
+
+Modal.setAppElement(document.body);
 
 const EditorView = (noProps, {
   handleUpdateState,
@@ -17,6 +21,8 @@ const EditorView = (noProps, {
   tweets = [],
   setProjectMetadata,
   updateCluster,
+  toggleSettings,
+  settingsOpen
 }) => {
   const handleClickPrint = () => {
     window.frames.preview.focus();
@@ -107,6 +113,9 @@ const EditorView = (noProps, {
           <button onClick={toggleAutoUpdate}>
             {autoUpdateEnabled ? 'disable auto-update': 'enable auto-update'}
           </button>
+          <button onClick={toggleSettings}>
+            settings
+          </button>
           <div>
             {
               clusters.map((thatCluster, index) => {
@@ -130,6 +139,14 @@ const EditorView = (noProps, {
           </button>
         </div>
       </div>
+
+      <Modal
+        isOpen={settingsOpen}
+        onRequestClose={toggleSettings}
+        contentLabel="Settings"
+      >
+        <SettingsManager />
+      </Modal>
     </div>
   )
 }
@@ -146,5 +163,7 @@ EditorView.contextTypes = {
   setProjectMetadata: PropTypes.func,
   tweets: PropTypes.array,
   updateCluster: PropTypes.func,
+  toggleSettings: PropTypes.func,
+  settingsOpen: PropTypes.bool,
 }
 export default EditorView;

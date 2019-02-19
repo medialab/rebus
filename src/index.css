@@ -104,3 +104,11 @@
     color: inherit;
 }
 
+.multiple-choices{
+    padding: 0;
+}
+
+.multiple-choices li{
+margin: 0;
+list-style-type: none;
+}
