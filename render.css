@@ -127,6 +127,7 @@
 
 .poster-contents{
   font-family: "ume_p_minchoregular";
+  line-height: 2em;
 }
 .poster-footer-container{
   position : absolute;
