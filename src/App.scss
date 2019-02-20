@@ -45,17 +45,37 @@
   justify-content: stretch;
 }
 
-.metadata-edition .control .input
+.metadata-edition .control .input,
+.textarea-container .textarea
 {
   flex: 1;
   border: none;
   margin-left: 1rem;
   outline: none;
 }
-.metadata-edition .control label
+.metadata-edition label,
+.textarea-container label
 {
   font-size: .5em;
 }
+
+.textarea-container{
+  margin-top: 1rem;
+}
+.textarea-container label,
+.textarea-container .textarea
+{
+  display: block;
+  margin-bottom: .5rem;
+}
+.textarea-container .textarea
+{
+  width: 100%;
+  font-size: .8rem;
+  padding: 0;
+  margin: 0;
+}
+
 
 @keyframes App-logo-spin {
   from {

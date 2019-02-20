@@ -62,6 +62,14 @@ class Tweet extends React.Component {
           });
         }
           
+      } else if (!this.state.positionStyles.left) {
+        const boxWidth = this.props.targetDimensions.width * 5;
+        this.setState({
+          positionStyles: {
+            left: Math.random() * boxWidth - boxWidth / 2,
+            height: Math.random() * boxWidth - boxWidth / 2,
+          }
+        })
       }
     }
   }
@@ -85,7 +93,7 @@ class Tweet extends React.Component {
     let {
       data, 
       targetTerm,
-      linkProps
+      linkProps,
     } = this.props, 
     isRT = false
     let MediaComponent = null, QuoteComponent = null
@@ -169,7 +177,7 @@ class Tweet extends React.Component {
         className="tweet" 
         style={{
           ...styles.tweet, 
-          ...positionStyles
+          ...positionStyles,
         }}>
         {isRT ? <Context {... this.props} /> : null}
         <div className="content" style={styles.content}>

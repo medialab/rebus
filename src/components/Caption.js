@@ -7,6 +7,8 @@ class Caption extends Component {
         caption,
         targetDimensions,
         cropCaption = false,
+        index,
+        captionLayout = 'align',
       },
     } = this;
     if (!caption || !caption.image) {
@@ -26,7 +28,7 @@ class Caption extends Component {
     const imageFinalWidth = (imageWidth * captionTargetWidth) / captionInitialWidth;
     const imageFinalHeight = imageFinalWidth * imageRatio;
     const left = - caption.x * imageFinalWidth;
-    const top = - caption.y * imageFinalHeight - targetDimensions.height
+    const top = - caption.y * imageFinalHeight - (caption.height * imageFinalHeight) / 2
     const style = {
       width: imageFinalWidth,
       height: imageFinalHeight,
@@ -37,14 +39,27 @@ class Caption extends Component {
     let containerStyle = {};
     if (cropCaption) {
       containerStyle = {
-        width: captionTargetWidth * 1.3,
-        height: captionTargetWidth * captionRatio * 1.3 * 2,
+        width: captionTargetWidth,
+        // border: '3px solid red',
+        height: captionTargetWidth * captionRatio,
         left: 0,
-        top: -(captionTargetWidth * captionRatio)*1.3 * 2 * .5,
+        top: -(captionTargetWidth * captionRatio * .5),
         overflow: 'hidden',
         position: 'absolute'
       }
+      style.top += (containerStyle.height * .5)
+      // style.left -= (containerStyle.width * .5)
+      if (captionLayout === 'stack') {
+        style.top = index * 5;
+        style.left = index * 5;
+      }
+    } else {
+      if (captionLayout === 'stack') {
+        style.top += index * 5;
+        style.left += index * 5;
+      }
     }
+
     return (
       <div style={containerStyle}>
         <img 

@@ -7,15 +7,28 @@ export const settingsSchema = {
       description: 'crop captions',
       type: 'boolean'
     },
+    
+    imagesWidth: {
+      description: 'images width',
+      type: 'string',
+      enum: ['word width', '10', '20', '50', '100']
+    },
     labelsLayout: {
       description: 'labels layout',
       type: 'string',
       enum: ['stack', 'random', 'superpoze']
-    }
+    },
+    captionsLayout: {
+      description: 'captions layout',
+      type: 'string',
+      enum: ['align', 'stack']
+    },
   },
   default: {
     cropCaptions: false,
-    labelsLayout: 'random'
+    labelsLayout: 'random',
+    imagesWidth: 'word width',
+    captionsLayout: 'align'
   }
 }
 

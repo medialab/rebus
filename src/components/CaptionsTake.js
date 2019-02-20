@@ -24,11 +24,14 @@ class CaptionsTake extends Component {
 
     const {
       cropCaptions = false,
+      imagesWidth = 'word width',
+      captionsLayout = 'align'
     } = settings;
 
     const targetTerm = extractTargetTerm(children);
     const relatedImages = findRelatedCaptions(
       captions.filter(caption => {
+        // console.log(caption.tweetCluster, cluster, caption.tweetCluster === cluster)
         if (cluster === 'all clusters') {
           return true;
         }
@@ -63,12 +66,21 @@ class CaptionsTake extends Component {
       };
     }
     return (
-      <span ref={bindContainer} className="captions-take">
+      <span 
+        ref={bindContainer} 
+        className="captions-take"
+        style={{
+          minWidth: imagesWidth === 'word width' ? undefined : +imagesWidth,
+          display: imagesWidth === 'word width' ? undefined : 'inline-block'
+
+        }}
+      >
         <span className="take-anchor" ref={bindTargetRef}>
           {targetTerm}
         </span>
         {
-          displayedCaptions.map((caption, index) => {
+          displayedCaptions
+          .map((caption, index) => {
             return (
               <div
                 style={containerStyle}
@@ -78,8 +90,13 @@ class CaptionsTake extends Component {
                 <Caption 
                   key={index} 
                   caption={caption} 
-                  targetDimensions={targetDimensions} 
+                  targetDimensions={{
+                    ...targetDimensions,
+                    width: imagesWidth === 'word width' ? targetDimensions.width : +imagesWidth
+                  }} 
                   cropCaption={cropCaptions}
+                  index={index}
+                  captionLayout={captionsLayout}
                 />
               </div>
             )

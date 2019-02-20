@@ -24,6 +24,8 @@ class LabelsTake extends Component {
 
     const {
       labelsLayout = 'random',
+      imagesWidth = 'word width'
+
     } = settings;
 
     const targetTerm = extractTargetTerm(children);
@@ -68,7 +70,14 @@ class LabelsTake extends Component {
       containerStyle.top = -(displayedLabels.length / 2) * 5;
     }
     return (
-      <span ref={bindContainer} className="labels-take">
+      <span 
+        ref={bindContainer}
+        style={{
+          minWidth: imagesWidth === 'word width' ? undefined : +imagesWidth * 1.3,
+          display: imagesWidth === 'word width' ? undefined : 'inline-block'
+        }}
+        className="labels-take"
+      >
         <span className="take-anchor" ref={bindTargetRef}>
           {targetTerm}
         </span>
@@ -85,7 +94,11 @@ class LabelsTake extends Component {
                   label={label} 
                   index={index}
                   layout={labelsLayout}
-                  targetDimensions={targetDimensions} 
+                  targetDimensions={{
+                    ...targetDimensions,
+                    width: imagesWidth === 'word width' ? targetDimensions.width : +imagesWidth
+
+                  }} 
                 />
               </div>
             )

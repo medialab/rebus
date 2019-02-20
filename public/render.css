@@ -144,6 +144,7 @@
   align-items: stretch;
   padding-top: var(--gutter-medium);
   font-family: "ume_hy_gothic_o5regular";
+  min-height: calc(var(--gutter-medium) * 5);
 }
 
 .poster-footer .main-footer-contents {

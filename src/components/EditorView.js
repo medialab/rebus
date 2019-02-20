@@ -38,7 +38,8 @@ const EditorView = (noProps, {
   const {
     title,
     subtitle,
-    authors
+    authors,
+    description,
   } = projectMetadata;
   const handleMetadataChange = (e, key) => {
     const value = e.target.value;
@@ -91,7 +92,21 @@ const EditorView = (noProps, {
                 onChange={e => handleMetadataChange(e, 'authors')}
               />
             </div>
+
           </div>
+
+          <div className="textarea-container">
+            <label>
+              Project description
+            </label>
+            <textarea
+              className="textarea"
+              placeholder="project description"
+              value={description} 
+              onChange={e => handleMetadataChange(e, 'description')}
+            />
+          </div>
+            
         </div>
         <h1 className="baseline"><a href="https://medialab.sciences-po.fr" target="blank" rel="noopener">médialab Sciences Po</a> | <i>rébus</i></h1>
       </div>

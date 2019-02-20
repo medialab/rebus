@@ -29,7 +29,7 @@ class Label extends Component {
     // const captionInitialWidth = imageWidth * captionWidthRatio;
     if (layout === 'superpoze') {
       left = 0;
-      top = 0;
+      top = -labelHeight / 2;
     } else if (layout === 'stack') {
       left = index * 5;
       top = index * 5;

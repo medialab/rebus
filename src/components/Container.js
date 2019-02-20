@@ -81,7 +81,8 @@ class App extends Component {
     let projectMetadata = {
       title: 'Rebus project title',
       subtitle: 'Rebus project subtitle',
-      authors: 'Rebus project authors'
+      authors: 'Rebus project authors',
+      description: ` Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque efficitur dictum diam, fermentum pharetra lectus varius in. Nullam mollis, arcu eu maximus congue, risus nisl auctor metus, sed tempus velit lorem at ligula. Morbi porttitor enim quis arcu tincidunt, sed volutpat libero mollis. Suspendisse et nunc convallis, semper dui in, laoreet lorem. Nunc maximus mauris sapien, eu aliquet magna sodales nec. Nullam lacinia rutrum sapien, ac hendrerit orci porttitor finibus. Cras urna augue, imperdiet in ante a, vestibulum elementum erat. Ut risus enim, fringilla et blandit a, tincidunt in magna. Ut sem diam, ultricies id nisl vitae, faucibus consectetur lorem. Curabitur nec augue fermentum, eleifend libero sit amet, ornare nunc. Sed ac ornare velit. Duis tempus libero sed mauris aliquam tincidunt.`
     };
     if (localMetadata) {
       try{

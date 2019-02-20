@@ -1,15 +1,17 @@
 // const fontSize = fontSize;
 const fontSize = '14px';
+const fontColor = '#484e54' // '#14171a';
 
 export default {
   'tweet': {
-    'backgroundColor': '#ffffff',
+    // 'backgroundColor': '#ffffff',
+    'backgroundColor': 'rgba(255,255,255,0.5)',
     'minHeight': '51px',
     'maxWidth': '588px',
     transition: 'all 1s ease',
     'minWidth': '350px',
     'borderBottom': '1px solid #e6ecf0',
-    'color': '#14171a',
+    'color': fontColor,
     'fontFamily': '"Helvetica Neue", "Helvetica", "Arial", "sans-serif"',
     'fontSize': fontSize,
     'lineHeight': '20px',
@@ -41,7 +43,7 @@ export default {
   },
   'fullname': {
     'fontWeight': 'bold',
-    'color': '#14171a'
+    'color': fontColor
   },
   'username': {
     'direction': 'ltr',
@@ -76,7 +78,7 @@ export default {
   'tweetText': {
     'whiteSpace': 'pre-wrap',
     'wordWrap': 'break-word',
-    'color': '#14171a',
+    'color': fontColor,
     'margin': 0
   },
   'footer': {

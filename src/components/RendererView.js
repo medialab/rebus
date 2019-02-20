@@ -104,7 +104,8 @@ class RendererView extends Component {
     const {
       title,
       subtitle,
-      authors
+      authors,
+      description
     } = projectMetadata;
     const rendered = redraft(rawContent, renderers);
     return (
@@ -120,9 +121,7 @@ class RendererView extends Component {
                 <h2 className="project-subtitle">{subtitle}</h2>
                 <h2 className="project-authors">{authors}</h2>
                 <div className="project-presentation">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque fermentum nisi sem, id suscipit leo interdum vitae. Proin interdum sapien non fringilla efficitur. Cras eu mi ac velit finibus efficitur. Vivamus eleifend fringilla enim in vestibulum. In interdum lacus nec iaculis mollis. Pellentesque in auctor enim, ac suscipit lorem. Integer mollis et lorem mattis fringilla. Aenean at nisl lorem. Nunc eget interdum nunc. Morbi ut orci est. In blandit ante ac tellus posuere, id lacinia ante hendrerit. Curabitur eget condimentum urna. Mauris cursus iaculis mauris, nec porttitor tortor volutpat quis. Etiam id maximus lectus. Pellentesque pharetra ex sed nulla faucibus, sit amet consectetur mauris facilisis. Proin nec euismod eros.
-
-    Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam eget eleifend augue. Maecenas sodales sem quis vehicula ultricies. Suspendisse venenatis venenatis ex, eget blandit mauris consequat in. Quisque rutrum vitae leo sit amet ullamcorper. Praesent tempus, felis vitae bibendum porttitor, odio magna elementum eros, vitae tincidunt mi tellus ut augue. Proin vitae faucibus est. Nulla vel felis sagittis elit tempus euismod. Nunc varius tortor sed dui lobortis finibus. Aenean sed malesuada ante, non posuere turpis. Praesent a condimentum nunc. Donec vel erat orci. Sed rhoncus fringilla nunc, ac suscipit nisl consequat non. Sed id suscipit mi.
+                  {description}
                 </div>
               </div>
               <div className="footer-meta">
