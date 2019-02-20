@@ -64,6 +64,10 @@ class CaptionsTake extends Component {
         left: (targetDimensions.x - containerDimensions.x), 
         top: (targetDimensions.y - containerDimensions.y),
       };
+      if (captionsLayout === 'stack') {
+        containerStyle.left -= (displayedCaptions.length * .5) * 5
+        containerStyle.top -= (displayedCaptions.length * .5) * 5
+      }
     }
     return (
       <span 

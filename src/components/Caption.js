@@ -50,8 +50,8 @@ class Caption extends Component {
       style.top += (containerStyle.height * .5)
       // style.left -= (containerStyle.width * .5)
       if (captionLayout === 'stack') {
-        style.top = index * 5;
-        style.left = index * 5;
+        containerStyle.left = index * 5;
+        containerStyle.top = index * 5;
       }
     } else {
       if (captionLayout === 'stack') {
