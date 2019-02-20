@@ -75,12 +75,12 @@ class Tweet extends React.Component {
   }
 
   componentDidMount = () => {
-    this.updatePosition();
+    // this.updatePosition();
     setTimeout(() => this.updatePosition(), 500);
   }
 
   componentDidUpdate = () => {
-    this.updatePosition();
+    // this.updatePosition();
     setTimeout(this.updatePosition(), 500);
   }
 
