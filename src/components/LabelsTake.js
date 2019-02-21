@@ -27,6 +27,7 @@ class LabelsTake extends Component {
       imagesWidth : initialImagesWidth = 'word width'
 
     } = settings;
+    const {term: targetTerm, options = []} = extractTargetTerm(children);
 
     let imagesWidth = initialImagesWidth;
     options.forEach(o => {
@@ -47,7 +48,6 @@ class LabelsTake extends Component {
       labelsLayout = 'superpoze';
     }
 
-    const {term: targetTerm, options = []} = extractTargetTerm(children);
     const relatedImages = findRelatedLabels(
       labels.filter(label => {
         if (cluster === 'all clusters') {
