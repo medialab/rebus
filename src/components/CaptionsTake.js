@@ -29,7 +29,12 @@ class CaptionsTake extends Component {
     } = settings;
 
     const {term: targetTerm, options = []} = extractTargetTerm(children);
-    const cropCaptions = options.includes('crop') ? 'crop' : initialCropCaptions;
+    let cropCaptions = initialCropCaptions;
+    if (options.includes('crop')) {
+      cropCaptions = true;
+    } else if (options.includes('extend')) {
+      cropCaptions = false;
+    }
     let imagesWidth = initialImagesWidth;
     options.forEach(o => {
       const match = o.match(/width([\d]+)/);
@@ -39,7 +44,7 @@ class CaptionsTake extends Component {
           imagesWidth  = candidate;
         }
       }
-    })
+    });
     let captionsLayout = initialCaptionsLayout;
     if (options.includes('align')) {
       captionsLayout = 'align';
