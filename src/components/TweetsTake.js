@@ -37,7 +37,7 @@ class TweetsTake extends Component {
       container,
     } = this;
 
-    const targetTerm = extractTargetTerm(children);
+    const {term: targetTerm, options = []} = extractTargetTerm(children);
     const relatedTweets = findRelatedTweets(
       tweets.filter(tweet => {
         if (cluster === 'all clusters') {
