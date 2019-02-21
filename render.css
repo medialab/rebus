@@ -71,6 +71,9 @@
   color: blue;
   z-index: -1;
 }
+.tweet-take{
+  z-index: -2;
+}
 .tweet-container,
 .caption-container,
 .label-container
