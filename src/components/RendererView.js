@@ -97,7 +97,8 @@ class RendererView extends Component {
       context: {
         rawContent,
         renderCss = '',
-        projectMetadata = {}
+        projectMetadata = {},
+        settings = {},
       }
     } = this;
 
@@ -107,11 +108,21 @@ class RendererView extends Component {
       authors,
       description
     } = projectMetadata;
+
+    const {
+      lineHeight = '2'
+    } = settings;
     const rendered = redraft(rawContent, renderers);
+    
     return (
       <div className="renderer-view">
         <div className="poster-container">
-          <div className="poster-contents">
+          <div 
+            className={`poster-contents`}
+            style={{
+              lineHeight: +lineHeight + 'em'
+            }}
+          >
           {rendered}
           </div>
           <div className="poster-footer-container">
@@ -154,5 +165,6 @@ RendererView.contextTypes = {
   renderCss: PropTypes.string,
   autoUpdateEnabled: PropTypes.bool,
   projectMetadata: PropTypes.object,
+  settings: PropTypes.object,
 }
 export default RendererView;

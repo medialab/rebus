@@ -159,6 +159,11 @@ const EditorView = (noProps, {
         isOpen={settingsOpen}
         onRequestClose={toggleSettings}
         contentLabel="Settings"
+        style={{
+          content: {
+            maxWidth: '40%'
+          }
+        }}
       >
         <SettingsManager />
       </Modal>

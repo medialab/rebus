@@ -29,6 +29,12 @@ export const settingsSchema = {
       description: 'grab only tweets that match exactly the words',
       type: 'boolean',
     },
+
+    lineHeight: {
+      description: 'poster text line height',
+      type: 'string',
+      enum: ['1', '1.1', '1.2', '1.3', '1.4', '1.5', '1.6', '1.7', '1.8', '1.9', '2']
+    }
     
   },
   default: {
@@ -36,7 +42,8 @@ export const settingsSchema = {
     labelsLayout: 'random',
     imagesWidth: 'word width',
     captionsLayout: 'align',
-    grabOnlyExactTweetMatches: false
+    grabOnlyExactTweetMatches: false,
+    lineHeight: 'double'
   }
 }
 
