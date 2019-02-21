@@ -17,7 +17,7 @@ export const settingsSchema = {
     imagesWidth: {
       description: 'images width',
       type: 'string',
-      enum: ['word width', '10', '20', '50', '100']
+      enum: ['word width', '10', '20', '50', '100', '150', '200', '250', '300', '350', '400', '450', '500']
     },
     
     labelsLayout: {
