@@ -23,12 +23,29 @@ class CaptionsTake extends Component {
     } = this;
 
     const {
-      cropCaptions = false,
-      imagesWidth = 'word width',
-      captionsLayout = 'align'
+      cropCaptions : initialCropCaptions = false,
+      imagesWidth : initialImagesWidth = 'word width',
+      captionsLayout : initialCaptionsLayout = 'align'
     } = settings;
 
-    const targetTerm = extractTargetTerm(children);
+    const {term: targetTerm, options = []} = extractTargetTerm(children);
+    const cropCaptions = options.includes('crop') ? 'crop' : initialCropCaptions;
+    let imagesWidth = initialImagesWidth;
+    options.forEach(o => {
+      const match = o.match(/width([\d]+)/);
+      if (match && match[1]) {
+        const candidate = +match[1];
+        if (!isNaN(candidate)) {
+          imagesWidth  = candidate;
+        }
+      }
+    })
+    let captionsLayout = initialCaptionsLayout;
+    if (options.includes('align')) {
+      captionsLayout = 'align';
+    } else if (options.includes('stack')) {
+      captionsLayout = 'stack';
+    }
     const relatedImages = findRelatedCaptions(
       captions.filter(caption => {
         // console.log(caption.tweetCluster, cluster, caption.tweetCluster === cluster)

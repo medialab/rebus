@@ -1,7 +1,7 @@
 
-const HASHTAG_REGEX = /#[\w\u0590-\u05fféèîû]+/g;
-const TILDE_REGEX = /~[\w\u0590-\u05fféèîû]+/g;
-const DOLLAR_REGEX = /\$[\w\u0590-\u05fféèîû]+/g;
+const HASHTAG_REGEX = /#[\w\u0590-\u05fféèîû:]+/g;
+const TILDE_REGEX = /~[\w\u0590-\u05fféèîû:]+/g;
+const DOLLAR_REGEX = /\$[\w\u0590-\u05fféèîû:]+/g;
 
 const findWithRegex = (regex, contentBlock, callback) => {
   const text = contentBlock.getText();

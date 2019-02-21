@@ -23,12 +23,31 @@ class LabelsTake extends Component {
     } = this;
 
     const {
-      labelsLayout = 'random',
-      imagesWidth = 'word width'
+      labelsLayout: initialLabelsLayout = 'random',
+      imagesWidth : initialImagesWidth = 'word width'
 
     } = settings;
 
-    const targetTerm = extractTargetTerm(children);
+    let imagesWidth = initialImagesWidth;
+    options.forEach(o => {
+      const match = o.match(/width([\d]+)/);
+      if (match && match[1]) {
+        const candidate = +match[1];
+        if (!isNaN(candidate)) {
+          imagesWidth  = candidate;
+        }
+      }
+    })
+    let labelsLayout = initialLabelsLayout;
+    if (options.includes('align')) {
+      labelsLayout = 'align';
+    } else if (options.includes('stack')) {
+      labelsLayout = 'stack';
+    } else if (options.includes('superpoze')) {
+      labelsLayout = 'superpoze';
+    }
+
+    const {term: targetTerm, options = []} = extractTargetTerm(children);
     const relatedImages = findRelatedLabels(
       labels.filter(label => {
         if (cluster === 'all clusters') {
