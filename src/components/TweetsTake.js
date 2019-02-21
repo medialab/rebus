@@ -32,10 +32,15 @@ class TweetsTake extends Component {
       context: {
         tweets = [],
         cluster = 'all clusters',
+        settings = {},
       },
       target,
       container,
     } = this;
+
+    const {
+      grabOnlyExactTweetMatches = false,
+    } = settings;
 
     const {term: targetTerm, options = []} = extractTargetTerm(children);
     const relatedTweets = findRelatedTweets(
@@ -45,7 +50,7 @@ class TweetsTake extends Component {
         }
         return tweet.cluster === cluster;
       })
-      , targetTerm);
+      , targetTerm, grabOnlyExactTweetMatches);
 
     const bindTargetRef = target => {
       this.target = target;
@@ -96,6 +101,7 @@ class TweetsTake extends Component {
 TweetsTake.contextTypes = {
   tweets: PropTypes.array,
   cluster: PropTypes.string,
+  settings: PropTypes.object,
 }
 
 export default TweetsTake;

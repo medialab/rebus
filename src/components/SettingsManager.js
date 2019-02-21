@@ -25,13 +25,18 @@ export const settingsSchema = {
       type: 'string',
       enum: ['stack', 'random', 'superpoze']
     },
+    grabOnlyExactTweetMatches: {
+      description: 'grab only tweets that match exactly the words',
+      type: 'boolean',
+    },
     
   },
   default: {
     cropCaptions: false,
     labelsLayout: 'random',
     imagesWidth: 'word width',
-    captionsLayout: 'align'
+    captionsLayout: 'align',
+    grabOnlyExactTweetMatches: false
   }
 }
 

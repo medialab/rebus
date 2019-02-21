@@ -1,9 +1,12 @@
 
 
-const findRelatedTweets = (tweets, targetTerm) => {
+const findRelatedTweets = (tweets, targetTerm, grabOnlyExactTweetMatches = false) => {
   const term = targetTerm.toLowerCase();
   return tweets.filter(tweet => {
-    const text = tweet.clean.toLowerCase();
+    let text = tweet.clean.toLowerCase();
+    if (grabOnlyExactTweetMatches) {
+      text = tweet.text.toLowerCase();
+    }
     return text.includes(term);
   })
 }
