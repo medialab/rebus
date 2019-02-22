@@ -125,7 +125,9 @@ class RendererView extends Component {
           >
           {rendered}
           </div>
-          <div className="poster-footer-container">
+          
+        </div>
+        <div className="poster-footer-container">
             <footer className="poster-footer">
               <div className="main-footer-contents">
                 <h1 className="project-title">{title}</h1>
@@ -152,7 +154,6 @@ class RendererView extends Component {
               </div>
             </footer>
           </div>
-        </div>
         <style>{renderCss}</style>
       </div>
     )
